@@ -1,0 +1,34 @@
+<div id="landing-screen">
+    <img id="ahyaaCover" [src]="ahyaaCover" alt="">
+    <div id="overlay"></div>
+    <h1>مراجعة اختبار الاحياء العملي</h1>
+    <h2>(استاذ نجيب الدرويش)</h2>
+    <h2>عمل الطالب: حيدر هاني الشخل</h2>
+    <h2>الشعبة 107</h2>
+
+</div>
+
+<div *ngIf="!selectedDrawing" class="drawing-list">
+
+    <ul>
+      <li *ngFor="let drawing of drawings" (click)="onDrawingClick(drawing)">
+        {{ drawing.name }}
+      </li>
+    </ul>
+</div>
+  
+  <div *ngIf="selectedDrawing" class="image-container">
+    <button (click)="onBackClick()">عودة</button>
+    <button (click)="toggleBlur()">{{ isBlurred ? 'ازالة الضباب' : 'اضافة الضباب' }}</button>
+    <div class="image-wrapper" (mousemove)="onMouseMove($event)">
+      <img [src]="selectedDrawing.src" [alt]="selectedDrawing.name" [class.blurred-img]="isBlurred">
+      <img [src]="selectedDrawing.src" [alt]="selectedDrawing.name" class="unblurred-img">
+    </div>
+  </div>
+
+  <br>
+  
+  <div>
+    <h3>لإضافة اي اقتراح / تواصل</h3>
+    <h3>+966 56 330 7217 : Whatsapp</h3>
+  </div>
